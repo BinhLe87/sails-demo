@@ -17,7 +17,7 @@ export default class Network extends BaseState  {
     @observable user_name = '';
     @observable user_permission = [];
     @observable user_info = {};
-    @observable state = 0; // placeholder
+    @observable state = 1; // placeholder
 
     /**
      * @constructor
