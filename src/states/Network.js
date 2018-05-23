@@ -1,6 +1,5 @@
 import { observable, action } from 'mobx';
 import BaseState from './BaseState';
-import Login from '../views/Login';
 import register from '../registerServiceWorker';
 
 // sha256('blockpass_developer_page_network')

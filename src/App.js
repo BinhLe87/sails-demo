@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
-import Login from './views/Login';
-import Register from './views/Register';
+import Login from './views/login/Login';
+import Register from './views/register/Register';
 
 class App extends Component {
   render() {

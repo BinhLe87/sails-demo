@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import { Card, Form, Icon, Input, Button, Checkbox } from 'antd';
 import 'antd/dist/antd.css';
-import './Login.scss';
+import './styles.scss';
 
 const FormItem = Form.Item;
 
