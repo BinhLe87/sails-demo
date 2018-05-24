@@ -23,7 +23,7 @@ class Login extends Component {
             <Checkbox>Remember me</Checkbox>
             <a className="login-form-forgot" href="">Forgot password</a>
           </FormItem>
-          <Button type="primary" htmlType="submit" className="login-form-button">
+          <Button type="primary" htmlType="submit" className="login-form-button" onClick={() => network.login()}>
             Log in
           </Button>
         </Form>
