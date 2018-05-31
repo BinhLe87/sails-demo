@@ -24,7 +24,7 @@ class Login extends Component {
 					</FormItem>
 					<FormItem>
 						<Checkbox>Remember me</Checkbox>
-						<a className="login-form-forgot" href="">Forgot password</a>
+						<a className="login-form-forgot" style={{float: 'right'}} href="">Forgot password</a>
 					</FormItem>
 					<Button type="primary" htmlType="submit" className="login-form-button" onClick={() => this.props.stores.network.login()}>
 						Log in

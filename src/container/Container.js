@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { Button, Layout, Icon } from 'antd';
 import { observer } from 'mobx-react';
+import { Switch } from 'react-router-dom';
 
-import AppDrawer from './drawer/AppDrawer';
 import AppHeader from './header/AppHeader';
+import AppDrawer from './drawer/AppDrawer';
+import AppFooter from './footer/AppFooter';
 // footer import
 
 import './style.scss';
 
-const { Header, Sider, Footer } = Layout;
+const { Header, Content, Sider, Footer } = Layout;
 
 class Container extends Component {
     constructor(props) {
@@ -24,10 +26,13 @@ class Container extends Component {
                 <AppDrawer/>
                 <Layout>
                     <AppHeader title="Header title"/>
-                    <label>Main</label>
-                    <Footer>
-                        <label>Footer</label>
-                    </Footer>
+                    <div>
+                        <Content className="content">
+                            <Switch>
+                            </Switch>
+                        </Content>
+                    </div>
+                    <AppFooter/>                
                 </Layout>
             </Layout>
         )

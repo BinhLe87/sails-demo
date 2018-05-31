@@ -21,7 +21,7 @@ class App extends Component {
 							<Switch>
 								<Route path="/register" component={Register}/>
 								<Route component={Login}/>
-							</Switch>	
+							</Switch>
 						)
 					)}/>
 				</div>
