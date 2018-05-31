@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Menu, Dropdown, Layout, Icon } from 'antd';
+import { Button, Input, Menu, Dropdown, Layout, Icon } from 'antd';
 import { observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import './styles.scss';
@@ -46,7 +46,7 @@ class AppDrawer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            collapsed: true
+            collapsed: false
         }
     }
 
@@ -56,8 +56,7 @@ class AppDrawer extends Component {
         
         return (
             <Sider className="drawer" trigger={null} collapsible collapsed={this.state.collapsed}>
-                <div className={this.state.collapsed ? "logoSmall" : "logo"}/>
-                <Icon type="menu-fold" onClick={() => _this.setState({collapsed: !_this.state.collapsed})}/>
+                <div className={this.state.collapsed ? "logoSmall" : "logo"} onClick={() => _this.setState({collapsed: !_this.state.collapsed})}/>
                 <Menu theme="light" mode="inline">
                 {
                     _routes.map((item, idx) => {
