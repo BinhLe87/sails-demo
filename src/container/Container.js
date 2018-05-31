@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Layout, Icon } from 'antd';
 import { observer } from 'mobx-react';
-// drawer import
-// header import
+
+import AppDrawer from './drawer/AppDrawer';
 import AppHeader from './header/AppHeader';
 // footer import
 
@@ -19,17 +19,12 @@ class Container extends Component {
     }
 
     render() {
-        let _this = this;
         return (
             <Layout>
-                <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-                    <div className="logo" />
-                    <Icon type="star" style={{fontSize: 16, color: '#08c'}}/>
-                    <Button onClick={() => _this.setState({collapsed: !_this.state.collapsed})}>Toggle</Button>
-                </Sider>
+                <AppDrawer/>
                 <Layout>
                     <AppHeader title="Header title"/>
-                        <label>Main</label>
+                    <label>Main</label>
                     <Footer>
                         <label>Footer</label>
                     </Footer>

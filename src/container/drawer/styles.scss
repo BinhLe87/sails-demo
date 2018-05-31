@@ -1,0 +1,31 @@
+.drawer {
+    background: #448aff;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+}
+
+.logo {
+    height: 32px;
+    margin: 16px;
+    color: #fff;
+    background: #448aff;
+    background-image: url('../logo.png');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: contain;
+}
+
+.logoSmall {
+    height: 32px;
+    margin: 16px;
+    color: #fff;
+    background: #448aff;
+    background-image: url('../logo-small.png');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: contain;
+}
+
+.toggleButton {
+    width: 100%;
+    text-align: right;
+}

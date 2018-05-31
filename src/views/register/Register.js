@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 
+@inject("stores")
 class Register extends Component {
+  @observer
   render() {
-    let { network, settings } = this.props.stores;
-
     return (
         <p className="App-intro">
           Enter your credential to register new account.
-            <button onClick={() => network.register()}>Register</button>
+            <button onClick={() => this.props.stores.network.register()}>Register</button>
         </p>
     );
   }
 }
 
-export default observer(Register);
+export default Register;
