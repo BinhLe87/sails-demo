@@ -25,11 +25,12 @@ npm start
 
 ## Getting started
 ### Principles
-- Make things clean
+- Make things tidy
 - Make things simple
 - Pull everytimes
 - Commit soon, commit early
-- Document & Test right after you finish
+- Good commit message: describe what you done, for what reason
+- Document & test right after you finish
 
 ### Adding mobx state
 
@@ -37,7 +38,7 @@ npm start
 
 ### Adding view
 - Clone `/view/Template` folder to a new one, rename the files & classes
-- Modify the 
+- Modify the code as you want
 - If the new view is accessible from the Sidebar, add a new entry for it
 ```javascript
 // ${PROJECT_DIR}/src/routes.js
