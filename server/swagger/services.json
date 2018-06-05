@@ -1,0 +1,34 @@
+[
+  {
+    "id": "101",
+    "title": "Service Title",
+    "desc": "Service description should be very very very long",
+    "url": "www.service.com",
+    "requirement": "KYC Level n required",
+    "logo": "../../res/logo.png"
+  },
+  {
+    "id": "102",
+    "title": "Service Title",
+    "desc": "Service description should be very very very long",
+    "url": "www.service.com",
+    "requirement": "KYC Level n required",
+    "logo": "../../res/logo.png"
+  },
+  {
+    "id": "103",
+    "title": "Service Title",
+    "desc": "Service description should be very very very long",
+    "url": "www.service.com",
+    "requirement": "KYC Level n required",
+    "logo": "../../res/logo.png"
+  },
+  {
+    "id": "104",
+    "title": "Service Title",
+    "desc": "Service description should be very very very long",
+    "url": "www.service.com",
+    "requirement": "KYC Level n required",
+    "logo": "../../res/logo.png"
+  }
+]

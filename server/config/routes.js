@@ -43,9 +43,12 @@ module.exports.routes = {
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
+  'GET /api/protected/document_api/:file': 'DocumentAPIController.swaggerUI',
+  'GET /api/protected/api_docs': 'DocumentAPIController.swaggerAPIDoc',
 
-
-
+  'POST /api/user/create': 'UserController.create',
+  'PUT   /api/user/login': 'UserController.login',
+  'POST /api/user/logout': 'UserController.logout',
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
   //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝

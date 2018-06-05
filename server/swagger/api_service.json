@@ -1,0 +1,65 @@
+{
+  "total": 1,
+  "cursor": "",
+  "result": [
+    {
+      "id": "10002",
+      "name": "Super Evil Corp",
+      "isin": "113",
+      "shortDescription": "Unspeakable Evil",
+      "longDescription": "Unleashed Unspeakable Evil",
+      "tags": [
+        "banking",
+        "gamming",
+        "netflixing"
+      ],
+      "images": {
+          "logo": "../../res/logo.png",
+          "backdrop": "",
+          "banner": "",
+          "icon": ""
+      },
+      "slug": "/super_evil_corp",
+      "levelRequired": 0,
+      "contacts": {
+        "website": "string",
+        "email": "string",
+        "facebook": "string",
+        "twitter": "string",
+        "googlePlus": "string",
+        "country": "string",
+        "address": [
+          "address1",
+          "address2"
+        ],
+        "language": [
+          "en",
+          "fr",
+          "jp",
+          "vi"
+        ]
+      },
+      "extras": [
+        [
+          "key1",
+          "value1"
+        ],
+        [
+          "key2",
+          "value2"
+        ]
+      ],
+      "register_endpoint": {
+        "website": "http://servicewebsite.com/register",
+        "endpoint": "http://servicename.blockpass.org/register"
+      },
+      "user_service_register": {
+        "id": "4b5393f27a3a49aaa34bff3c150bd003",
+        "service_id": "string",
+        "register_date": "2017-05-31T22:30:36Z",
+        "register_transaction": "string",
+        "status": "active"
+      }
+    }
+  ]
+}
