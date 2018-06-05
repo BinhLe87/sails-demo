@@ -17,3 +17,38 @@
 .headerMenuItem {
     margin-left: 10px;
 }
+
+.headerTitle {
+    width: 200px;
+    height: 64px;
+    float: left;
+}
+
+.headerTitleSmall {
+    width: 80px;
+    height: 64px;
+    float: left;
+}
+
+.logo {
+    width: 168px;
+    height: 32px;
+    margin: 16px;
+    color: #fff;
+    background: #448aff;
+    background-image: url('../logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.logoSmall {
+    height: 32px;
+    margin: 16px;
+    color: #fff;
+    background: #448aff;
+    background-image: url('../logo-small.png');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: contain;
+}

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Button, Input, Menu, Dropdown, Layout, Icon } from 'antd';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import './styles.scss';
 import routes from '../../routes';
+import { observable } from 'mobx';
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -42,21 +43,20 @@ class MenuItem extends Component {
     }
 }
 
+@inject('stores')
 class AppDrawer extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            collapsed: false
-        }
     }
 
+    @observer
     render() {
+        let { settings } = this.props.stores;
         let _this = this;
         let _routes = routes.routes;
         
         return (
-            <Sider className="drawer" trigger={null} collapsible collapsed={this.state.collapsed}>
-                <div className={this.state.collapsed ? "logoSmall" : "logo"} onClick={() => _this.setState({collapsed: !_this.state.collapsed})}/>
+            <Sider className="drawer" trigger={null} collapsible collapsed={!settings.sidebar_open}>
                 <Menu theme="light" mode="inline">
                 {
                     _routes.map((item, idx) => {
@@ -69,4 +69,4 @@ class AppDrawer extends Component {
     }
 }
 
-export default observer(AppDrawer);
+export default AppDrawer;

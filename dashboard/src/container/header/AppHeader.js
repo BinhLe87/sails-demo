@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { Button, Menu, Dropdown, Layout, Icon } from 'antd';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import './styles.scss';
 
 const { Header } = Layout;
 
+@inject('stores')
 class AppHeader extends Component {
+    @observer
     render() {
+        let settings = this.props.stores.settings;
+
         const menu = (
             <Menu>
                 <Menu.Item>
@@ -23,6 +27,9 @@ class AppHeader extends Component {
 
         return (
             <Header className="header">
+                <div className={settings.sidebar_open ? 'headerTitle' : 'headerTitleSmall'}>
+                    <div className={settings.sidebar_open ? 'logo' : 'logoSmall'}/>
+                </div>
                 <label className="headerText">{this.props.title}</label>
                 <div className="headerMenu">
                     <Dropdown overlay={menu} trigger={['click']}>
@@ -36,4 +43,4 @@ class AppHeader extends Component {
     }
 }
 
-export default observer(AppHeader);
+export default AppHeader;

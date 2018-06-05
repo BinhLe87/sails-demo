@@ -44,7 +44,7 @@ function breadCrumbRender(currentPath) {
     }
 
     return (
-        <div className="breadcrumb">
+        <div>
         {
             path.map((item, idx) => {
                 let isFirstItem = idx == 0;
@@ -72,23 +72,25 @@ class Container extends Component {
         let _routes = routes.routes;
         return (
             <Layout>
-                <AppDrawer/>
+                <AppHeader title="Header title"/>
                 <Layout>
-                    <AppHeader title="Header title"/>
+                    <AppDrawer/>
                     <div>
-                        <Content className="content">
-                            {breadCrumbRender(this.props.location.pathname)}
-                            <Switch>
-                            {
-                                _routes.filter(route => network.hasPermission(route.scope))
-                                    .map((route, idx) => (
-                                        <Route exact key={idx} path={route.url} component={route.component}/>
-                                    )) 
-                            }
-                            </Switch>
-                        </Content>
+                        <Layout>
+                            <Content className="content">
+                                {breadCrumbRender(this.props.location.pathname)}
+                                <Switch>
+                                {
+                                    _routes.filter(route => network.hasPermission(route.scope))
+                                        .map((route, idx) => (
+                                            <Route exact key={idx} path={route.url} component={route.component}/>
+                                        )) 
+                                }
+                                </Switch>
+                            </Content>
+                        </Layout>
+                        <AppFooter/>
                     </div>
-                    <AppFooter/>
                 </Layout>
             </Layout>
         )
