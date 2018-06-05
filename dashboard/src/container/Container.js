@@ -49,7 +49,7 @@ function breadCrumbRender(currentPath) {
             path.map((item, idx) => {
                 let isFirstItem = idx == 0;
                 let isLastItem = idx == path.length - 1;
-                return <span className={isLastItem ? 'breadcrumbCurrent' : 'breadcrumbPrevious'}>{isFirstItem ? item.title : ' > ' + item.title}</span>
+                return <span key={idx} className={isLastItem ? 'breadcrumbCurrent' : 'breadcrumbPrevious'}>{isFirstItem ? item.title : ' > ' + item.title}</span>
             })
         }
         <hr/>
@@ -82,13 +82,13 @@ class Container extends Component {
                             {
                                 _routes.filter(route => network.hasPermission(route.scope))
                                     .map((route, idx) => (
-                                        <Route exact key={idx} path={route.path} component={route.component}/>
+                                        <Route exact key={idx} path={route.url} component={route.component}/>
                                     )) 
                             }
                             </Switch>
                         </Content>
                     </div>
-                    <AppFooter/>                
+                    <AppFooter/>
                 </Layout>
             </Layout>
         )

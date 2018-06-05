@@ -1,55 +1,49 @@
+import ServiceDetail from './views/servicedetail/ServiceDetail';
 import Template from './views/template/Template';
 
 export default {
     routes: [
         {
-            title: 'Menu item 1',
-            icon: 'user',
-            url: '/',
+            title: 'Administration',
+            icon: 'lock',
+            url: '/administration',
             scope: [],
             component: Template
         },
         {
-            title: 'Menu item 2',
-            icon: 'pie-chart',
-            url: '/user',
+            title: 'Services',
+            icon: 'shopping-cart',
+            url: '/services',
             childs: [
                 {
-                    title: 'Submenu item 1',
-                    icon: 'user',
-                    url: '/user/1',
+                    title: 'Add Service',
+                    icon: 'plus-circle-o',
+                    url: '/services/add',
                     scope: [],
-                    component: Template
+                    component: ServiceDetail
                 },
                 {
-                    title: 'Submenu item 2',
-                    icon: 'user',
-                    url: '/user/2',
+                    title: 'Update Service',
+                    icon: 'edit',
+                    url: '/services/update',
                     scope: [],
-                    component: Template
-                },
-                {
-                    title: 'Submenu item 3',
-                    icon: 'user',
-                    url: '/user/3',
-                    scope: [],
-                    component: Template
+                    component: ServiceDetail
                 }
             ]
         },
-        {
-            title: 'Menu item 3',
-            icon: 'user',
-            url: '/settings',
-            scope: [],
-            component: Template
-        },
-        {
-            title: 'Menu item 4',
-            icon: 'user',
-            url: '/doc',
-            scope: [],
-            component: Template
-        },
+        // {
+        //     title: 'Menu item 3',
+        //     icon: 'user',
+        //     url: '/settings',
+        //     scope: [],
+        //     component: Template
+        // },
+        // {
+        //     title: 'Menu item 4',
+        //     icon: 'user',
+        //     url: '/doc',
+        //     scope: [],
+        //     component: Template
+        // },
     ]
 };

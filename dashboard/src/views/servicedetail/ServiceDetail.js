@@ -6,7 +6,7 @@ import './styles.scss';
 const FormItem = Form.Item;
 
 @inject("stores")
-class Template extends Component {
+class ServiceDetail extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -18,12 +18,9 @@ class Template extends Component {
 	render() {
 		return (
             <div>
-				<Card loading={this.state.loading} title="Guess what?">
-					<img src="https://i1.wp.com/www.davishousecac.org/wp-content/uploads/2016/12/UNDER-CONSTRUCTION-kids.png" style={{width: '100%'}}/>
-				</Card>
 			</div>
 		);
 	}
 }
 
-export default Template;
+export default ServiceDetail;
