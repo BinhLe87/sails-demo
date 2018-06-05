@@ -9,7 +9,7 @@ class AppFooter extends Component {
     render() {
         return (
             <Footer style={{ textAlign: 'center' }}>
-                <span>Copyright Blockpass @2018
+                <span>Copyright Blockpass ©2018
                 </span>
             </Footer>
         )
