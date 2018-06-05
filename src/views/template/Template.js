@@ -9,14 +9,20 @@ const FormItem = Form.Item;
 class Template extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			loading: true
+		}
 	}
 
 	@observer
 	render() {
 		return (
             <div>
-                <a>Hello world</a>
-            </div>
+				<Card loading={this.state.loading} title="Card title">
+				Whatever content
+				</Card>
+				<Button onClick={this.handleClick} style={{ marginTop: 16 }}>Toggle loading</Button>
+			</div>
 		);
 	}
 }
