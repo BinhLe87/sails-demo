@@ -37,6 +37,10 @@ export default class Network extends BaseState  {
         return this.state === 2;
     }
 
+    @observable hasPermission(permissions) {
+        return true;
+    }
+
     @action login() {
         this.state = 2;
     }
