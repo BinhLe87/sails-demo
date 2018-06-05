@@ -75,7 +75,7 @@ class Container extends Component {
                 <AppHeader title='{settings.current_service.name}'/>
                 <Layout>
                     <AppDrawer/>
-                    <div>
+                    <div style={{width: '100%'}}>
                         <Layout>
                             <Content className="content">
                                 {breadCrumbRender(this.props.location.pathname)}
