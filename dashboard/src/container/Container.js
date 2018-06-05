@@ -68,11 +68,11 @@ class Container extends Component {
 
     @observer
     render() {
-        let { network } = this.props.stores;
+        let { network, settings } = this.props.stores;
         let _routes = routes.routes;
         return (
-            <Layout>
-                <AppHeader title="Header title"/>
+            <Layout style={{height:'100vh'}}>
+                <AppHeader title='{settings.current_service.name}'/>
                 <Layout>
                     <AppDrawer/>
                     <div>
