@@ -12,13 +12,13 @@ module.exports = {
         try {
             let userName = req.param('user_name')
             let password = req.param('password')
-        
+
             if (!userName) {
-                return res.json({ "status": "Missing param" })
+                return res.err({ code: 400, mssg: "Missing User Name" })
             }
 
             if (!password) {
-                return res.json({ "status": "Missing param" })
+                return res.json({ code: 400, mssg: "Missing Password" })
             }
 
             password = Utils.sha256(password)
@@ -26,7 +26,7 @@ module.exports = {
             return res.json({ status: "success", result: req.param('test') })
         } catch (error) {
             sails.log.error("[UserController - create] Write to db error", error)
-            return res.serverError("Internal Server Error")
+            return res.error({})
         }
     },
     /**
