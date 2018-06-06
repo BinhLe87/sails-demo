@@ -25,8 +25,6 @@ module.exports = function success(data, code) {
     var sails = req._sails;
 
     var statusCode = code ? code : 200;
-    var body = err;
-
 
     res.status(statusCode)
 
