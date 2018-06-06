@@ -5,5 +5,11 @@
   "_generatedWith": {
     "sails": "1.0.2",
     "sails-generate": "1.15.27"
+  },
+  "hooks": {
+    "orm": false,
+    "pubsub": false,
+    "blueprints": false,
+    "grunt": false
   }
 }

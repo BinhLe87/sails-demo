@@ -24,9 +24,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'pages/homepage'
-  },
+
 
   /***************************************************************************
   *                                                                          *
@@ -43,8 +41,9 @@ module.exports.routes = {
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
-  'GET /api/protected/document_api/:file': 'DocumentAPIController.swaggerUI',
   'GET /api/protected/api_docs': 'DocumentAPIController.swaggerAPIDoc',
+  'GET /api/protected/document_api/:file': { controller: 'DocumentAPIController', action: 'swaggerUI', skipAssets: false },
+
 
   'POST /api/user/create': 'UserController.create',
   'PUT   /api/user/login': 'UserController.login',

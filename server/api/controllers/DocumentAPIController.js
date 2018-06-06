@@ -17,8 +17,6 @@ module.exports = {
             res.notFound();
         });
         stream.pipe(res);
-        // let files = SwaggerGenerate.generate()
-        // return res.json({ status: "success", files: files })
     },
     swaggerAPIDoc: function (req, res) {
         var filePath = path.resolve(sails.config.appPath, "docs", "swagger.json");
