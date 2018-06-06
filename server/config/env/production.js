@@ -373,7 +373,8 @@ module.exports = {
   custom: {
     baseUrl: 'https://example.com',
     internalEmailAddress: 'support@example.com',
-    salt: process.env.SALT || Date.now()
+    salt: process.env.SALT || Date.now(),
+    deployEnv: process.env.DEPLOY_ENV,
     // mailgunDomain: 'mg.example.com',
     // mailgunSecret: 'key-prod_fake_bd32301385130a0bafe030c',
     // stripeSecret: 'sk_prod__fake_Nfgh82401348jaDa3lkZ0d9Hm',
@@ -391,6 +392,9 @@ module.exports = {
 
   },
 
+  blockpass: {
+    host: process.env.BLOCKPASS_HOST
+  }
 
 
 };
