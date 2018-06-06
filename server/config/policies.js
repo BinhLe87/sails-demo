@@ -18,5 +18,11 @@ module.exports.policies = {
   ***************************************************************************/
 
   // '*': true,
-
+  'ServiceController': {
+    '*': 'is-logged-in'
+  },
+  'UserController': {
+    'logout': 'is-logged-in',
+    'create': 'is-logged-in'
+  }
 };
