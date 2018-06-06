@@ -18,7 +18,7 @@ module.exports = {
             }
 
             if (!password) {
-                return res.json({ code: 400, mssg: "Missing Password" })
+                return res.err({ code: 400, mssg: "Missing Password" })
             }
 
             password = Utils.sha256(password)
