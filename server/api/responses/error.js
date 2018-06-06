@@ -27,21 +27,21 @@ module.exports = function error(err) {
     var res = this.res;
     var sails = req._sails;
 
-    var statusCode = err.code
-    var statusCode = 500;
+    var statusCode = err.code ? err.code : 500
+
     var body = err;
     if (sails.config.deployEnv === sails.config.constants.deployEnv.prod && sails.config.keepResponseErrors !== true) {
         err.data = {}
     }
 
-    res.status(err.code)
+    res.status(statusCode)
 
     // Respond using the appropriate custom response
     return res.json(
         {
             status: "error",
-            code: err.code,
-            message: err.mssg,
+            code: statusCode,
+            message: err.mssg || "",
             data: err.data || {}
         }
     )

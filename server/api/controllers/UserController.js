@@ -1,6 +1,6 @@
 module.exports = {
     /**
-    * This function comment is parsed by doctrine
+    * Create User
     * @route POST /api/user/create
     * @group user - Operations about user
     * @param {string} user_name.query.required - username
@@ -23,14 +23,15 @@ module.exports = {
 
             password = Utils.sha256(password)
             await User.create({ userName: userName, password: password })
-            return res.json({ status: "success", result: req.param('test') })
+
+            return res.json()
         } catch (error) {
             sails.log.error("[UserController - create] Write to db error", error)
             return res.error({})
         }
     },
     /**
-    * This function comment is parsed by doctrine
+    * User Login
     * @route PUT /api/user/login
     * @group user - Operations about user
     * @param {string} user_name.query.required - username
@@ -43,11 +44,11 @@ module.exports = {
             let userName = req.param('user_name')
             let password = req.param('password')
             if (!userName) {
-                return res.json({ "status": "Missing param" })
+                return res.err({ code: 400, mssg: "Missing User Name" })
             }
 
             if (!password) {
-                return res.json({ "status": "Missing param" })
+                return res.err({ code: 400, mssg: "Missing Password" })
             }
 
             password = Utils.sha256(password)
@@ -55,21 +56,21 @@ module.exports = {
             let user = await User.findOne({ userName: userName, password: password, status: 'active' })
 
             if (!user) {
-                return res.json({ status: "User not found" })
+                return res.err({ code: 404, mssg: "User Not Found" })
             }
 
             req.session.cookie.maxAge = sails.config.custom.rememberMeCookieMaxAge;
             req.session.userId = user.id;
             req.session.hashed = Utils.sha256(user.id + sails.config.custom.salt)
 
-            return res.json({ status: "success" })
+            return res.success()
         } catch (error) {
             sails.log.error("[UserController - login] Read db error", error)
-            return res.serverError("Internal Server Error")
+            return res.err({ code: 500, mssg: "Unable to connect to database", data: error })
         }
     },
     /**
-    * This function comment is parsed by doctrine
+    * User Logout
     * @route POST /api/user/logout
     * @group user - Operations about user
     * @param {string} user_name.query.required - username
@@ -79,6 +80,6 @@ module.exports = {
     */
     logout: async function (req, res) {
         // delete req.session.userId;
-        return res.json({ status: "success", detail: req.session.userId })
+        return res.json({ status: "success", data: req.session.userId })
     }
 }
