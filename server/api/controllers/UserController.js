@@ -28,7 +28,7 @@ module.exports = {
             return res.json()
         } catch (error) {
             sails.log.error("[UserController - create] Write to db error", error)
-            return res.error({})
+            return res.error({ code: 500, mssg: "Unable to connect to database", data: error })
         }
     },
     /**
