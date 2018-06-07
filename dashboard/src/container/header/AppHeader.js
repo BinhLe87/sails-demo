@@ -4,6 +4,7 @@ import { inject, observer } from 'mobx-react';
 import './styles.scss';
 
 const { Header } = Layout;
+const MenuItem = Menu.Item;
 
 @inject('stores')
 class AppHeader extends Component {
@@ -13,15 +14,15 @@ class AppHeader extends Component {
 
         const menu = (
             <Menu>
-                <Menu.Item>
+                <MenuItem>
                     <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">1st menu item</a>
-                </Menu.Item>
-                <Menu.Item>
+                </MenuItem>
+                <MenuItem>
                     <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">2nd menu item</a>
-                </Menu.Item>
-                <Menu.Item onClick={() => network.logout()}>
+                </MenuItem>
+                <MenuItem onClick={() => network.logout()}>
                     <a target="_blank" rel="noopener noreferrer">Logout</a>
-                </Menu.Item>
+                </MenuItem>
             </Menu>
         );
 
