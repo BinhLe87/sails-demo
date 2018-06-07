@@ -10,6 +10,6 @@
     "orm": false,
     "pubsub": false,
     "blueprints": false,
-    "grunt": false
+    "grunt": true
   }
 }

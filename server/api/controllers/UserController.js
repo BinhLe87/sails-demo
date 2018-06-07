@@ -12,6 +12,7 @@ module.exports = {
         try {
             let userName = req.param('user_name')
             let password = req.param('password')
+            let role = req.param('role')
 
             if (!userName) {
                 return res.err({ code: 400, mssg: "Missing User Name" })

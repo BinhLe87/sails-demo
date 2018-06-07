@@ -20,10 +20,10 @@ module.exports = {
             protect: true
         },
 
-        permission: {
+        role: {
             type: 'json',
             columnType: 'array',
-            defaultsTo: ['view']
+            defaultsTo: ['operator']
         },
 
         status: {

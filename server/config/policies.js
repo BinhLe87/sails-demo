@@ -22,7 +22,6 @@ module.exports.policies = {
     '*': 'is-logged-in'
   },
   'UserController': {
-    'logout': 'is-logged-in',
-    'create': 'is-logged-in'
+    'logout': 'is-logged-in'
   }
 };

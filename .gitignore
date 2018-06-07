@@ -6,7 +6,6 @@ yarn.lock
 # dependencies
 dashboard/node_modules
 server/node_modules
-server/docs/swagger.json
 
 # testing
 /coverage
