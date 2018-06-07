@@ -10,6 +10,7 @@
     "@sailshq/socket.io-redis": "^5.2.0",
     "doctrine-file": "^2.0.0",
     "grunt": "1.0.1",
+    "jsonwebtoken": "^8.2.2",
     "recursive-iterator": "^3.3.0",
     "request": "^2.87.0",
     "request-promise": "^4.2.2",
@@ -18,7 +19,8 @@
     "sails-hook-orm": "^2.0.0-16",
     "sails-hook-sockets": "^1.4.0",
     "sails-mongo": "^1.0.1",
-    "swagger-parser": "^5.0.0"
+    "swagger-parser": "^5.0.0",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "@sailshq/eslint": "^4.19.3"

@@ -443,6 +443,7 @@ module.exports = {
     * List service
     * @route GET /api/service
     * @group service - Operations about service
+    * @param {string} Authorization.header.required - accesstoken
     * @returns {object} 200 - An array of service
     * @returns {Error}  default - Unexpected error
     */
@@ -474,6 +475,7 @@ module.exports = {
     * Service Detail
     * @route GET /api/service/{service_id}
     * @group service - Operations about service
+    * @param {string} Authorization.header.required - accesstoken
     * @returns {object} 200 - Service Info
     * @returns {Error}  default - Unexpected error
     */
@@ -515,6 +517,7 @@ module.exports = {
     * Create Service
     * @route POST /api/service
     * @group service - Operations about service
+    * @param {string} Authorization.header.required - accesstoken
     * @returns {object} 200 - Service Info
     * @returns {Error}  default - Unexpected error
     */
@@ -554,6 +557,7 @@ module.exports = {
     * Update Service
     * @route PUT /api/service/{service_id}
     * @group service - Operations about service
+    * @param {string} Authorization.header.required - accesstoken
     * @returns {object} 200 - Service Info
     * @returns {Error}  default - Unexpected error
     */
@@ -600,6 +604,7 @@ module.exports = {
     * Delete Service
     * @route DELETE /api/service/{service_id}
     * @group service - Operations about service
+    * @param {string} Authorization.header.required - accesstoken
     * @returns {object} 200 - Service Info
     * @returns {Error}  default - Unexpected error
     */

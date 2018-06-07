@@ -1,8 +1,17 @@
 module.exports = {
     /**
     * @typedef success
-    * @property {string}
+    * @property {string} status
+    * @property {object} data
     */
+
+    /**
+     * @typedef AccessToken
+     * @property {string} status
+     * @property {object} data
+     * @property {string} data.token
+     * @property {integer} data.expire
+     */
 
     /**
     * Create User
@@ -69,11 +78,19 @@ module.exports = {
                 return res.error({ code: 404, mssg: "User Not Found" })
             }
 
-            req.session.cookie.maxAge = sails.config.custom.rememberMeCookieMaxAge;
-            req.session.userId = user.id;
-            req.session.hashed = Utils.sha256(user.id + sails.config.custom.salt)
+            let accessToken = TokenAuthService.generateTokenWithJTI({
+                userId: user._id,
+                platform: "web"
+            })
 
-            return res.success()
+            req.session.cookie.maxAge = sails.config.crypto.tokenExpireTime;
+            req.session.tokenId = accessToken.jti;
+
+            return res.success({
+                accessToken: accessToken.token,
+                expiry: sails.config.crypto.tokenExpireTime
+            })
+
         } catch (error) {
             sails.log.error("[UserController - login] Read db error", error)
             return res.error({ code: 500, mssg: "Unable to connect to database", data: error })
@@ -89,7 +106,7 @@ module.exports = {
     * @returns {Error}  default - Unexpected error
     */
     logout: async function (req, res) {
-        // delete req.session.userId;
-        return res.json({ status: "success", data: req.session.userId })
+        delete req.session.tokenId;
+        return res.success()
     }
 }
