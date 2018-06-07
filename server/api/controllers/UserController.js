@@ -1,5 +1,10 @@
 module.exports = {
     /**
+    * @typedef success
+    * @property {string}
+    */
+
+    /**
     * Create User
     * @route POST /api/user/create
     * @group user - Operations about user
@@ -22,6 +27,10 @@ module.exports = {
                 return res.error({ code: 400, mssg: "Missing Password" })
             }
 
+            let user = await User.findOne({ userName: userName })
+            if (user) {
+                return res.error({ code: 400, mssg: "User Name has been used" })
+            }
             password = Utils.sha256(password)
             await User.create({ userName: userName, password: password })
 
