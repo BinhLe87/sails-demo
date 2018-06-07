@@ -15,11 +15,11 @@ module.exports = {
             let role = req.param('role')
 
             if (!userName) {
-                return res.err({ code: 400, mssg: "Missing User Name" })
+                return res.error({ code: 400, mssg: "Missing User Name" })
             }
 
             if (!password) {
-                return res.err({ code: 400, mssg: "Missing Password" })
+                return res.error({ code: 400, mssg: "Missing Password" })
             }
 
             password = Utils.sha256(password)
@@ -45,11 +45,11 @@ module.exports = {
             let userName = req.param('user_name')
             let password = req.param('password')
             if (!userName) {
-                return res.err({ code: 400, mssg: "Missing User Name" })
+                return res.error({ code: 400, mssg: "Missing User Name" })
             }
 
             if (!password) {
-                return res.err({ code: 400, mssg: "Missing Password" })
+                return res.error({ code: 400, mssg: "Missing Password" })
             }
 
             password = Utils.sha256(password)
@@ -57,7 +57,7 @@ module.exports = {
             let user = await User.findOne({ userName: userName, password: password, status: 'active' })
 
             if (!user) {
-                return res.err({ code: 404, mssg: "User Not Found" })
+                return res.error({ code: 404, mssg: "User Not Found" })
             }
 
             req.session.cookie.maxAge = sails.config.custom.rememberMeCookieMaxAge;
@@ -67,7 +67,7 @@ module.exports = {
             return res.success()
         } catch (error) {
             sails.log.error("[UserController - login] Read db error", error)
-            return res.err({ code: 500, mssg: "Unable to connect to database", data: error })
+            return res.error({ code: 500, mssg: "Unable to connect to database", data: error })
         }
     },
     /**
