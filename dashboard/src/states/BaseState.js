@@ -33,6 +33,7 @@ export default class BaseState {
      * If there're any misconfiguration or errors while loading, a blank state will be presented instead
      */
     @action loadState() {
+        let isDirty = false;
         let _store_object = {};
         try {
             _store_object = JSON.parse(window.localStorage[this.STORAGE_KEY]);
@@ -44,8 +45,16 @@ export default class BaseState {
             this.initState();
         } else {
             this.fields.map((field) => {
-                this[field.id] = _store_object[field.id];
+                if (_store_object[field.id] == undefined || _store_object[field.id] == null)
+                    isDirty = true;
+                else {
+                    this[field.id] = _store_object[field.id];
+                }
             })
+        }
+
+        if (isDirty) {
+            this.saveState();
         }
     }
 

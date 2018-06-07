@@ -3,7 +3,8 @@ import BaseState from './BaseState';
 import register from '../registerServiceWorker';
 
 // sha256('blockpass_developer_page_network')
-const NETWORK_KEY_NAME = 'E958D0D8378CE26EEB16BD5D33A79F596F9C11AB70B759BAB357384E9E66A050';
+// const NETWORK_KEY_NAME = 'E958D0D8378CE26EEB16BD5D33A79F596F9C11AB70B759BAB357384E9E66A050';
+const NETWORK_KEY_NAME = 'bp_dev_portal_network'
 
 /**
  * Class for managing user login session, api calls 
@@ -11,7 +12,7 @@ const NETWORK_KEY_NAME = 'E958D0D8378CE26EEB16BD5D33A79F596F9C11AB70B759BAB35738
  */
 export default class Network extends BaseState  {
     @observable access_token = '';
-    @observable expire_time = '';
+    @observable expire_time = 0;
     @observable user_email = '';
     @observable user_name = '';
     @observable user_permission = [];
@@ -27,7 +28,7 @@ export default class Network extends BaseState  {
     constructor() {
         let fields = [
             { 'id': 'access_token', 'default_val': ''},
-            { 'id': 'expire_time', 'default_val': ''},
+            { 'id': 'expire_time', 'default_val': 0},
             { 'id': 'user_email', 'default_val': ''},
             { 'id': 'user_name', 'default_val': ''},
             { 'id': 'user_permission', 'default_val': []},
@@ -37,7 +38,7 @@ export default class Network extends BaseState  {
     }
 
     @observable isLoggedIn() {
-        return this.state === 2;
+        return true;
     }
 
     @observable hasPermission(permissions) {
