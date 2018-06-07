@@ -17,11 +17,12 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
+  '*': true,
   'ServiceController': {
-    '*': 'is-logged-in'
+    '*': 'tokenAuth'
   },
-  'UserController': {
-    'logout': 'is-logged-in'
-  }
+  // 'UserController': {
+  //   'logout': 'tokenAuth',
+  //   'create': 'tokenAuth
+  // }
 };

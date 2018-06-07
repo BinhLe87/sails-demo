@@ -1,0 +1,19 @@
+version: '3'
+services:
+  server:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+   
+    command: sails lift --prod 
+    ports:
+      - "3000:1337"
+
+    restart: always
+    
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+      DELOY_SECRET_KEY: ${DELOY_SECRET_KEY}
+      MONGODB_URI: ${MONGODB_URI}
+      BLOCKPASS_BASE_URL: ${BLOCKPASS_BASE_URL}
+      DEPLOY_ENV: ${DEPLOY_ENV}
