@@ -530,7 +530,7 @@ module.exports = {
             fake_data.result.push(body)
             return res.success(body)
         }
-        
+
         rp({
             method: 'POST',
             uri: `${sails.config.blockpass.host}/api/rest/service/`,
@@ -611,11 +611,14 @@ module.exports = {
         }
 
         if (sails.config.deployEnv == "DEV") {
-            body._id = serviceId
+            let result = {}
             fake_data.result.map((val, i) => {
-                delete val
+                if (val._id === serviceId) {
+                    Object.assign(result, val)
+                    delete val
+                }
             })
-            return res.success(body)
+            return res.success(result)
         }
         rp({
             method: 'DELETE',
