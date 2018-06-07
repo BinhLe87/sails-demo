@@ -84,7 +84,7 @@ export default class Network extends BaseState  {
     }
 
     @action logout() {
-        this.state = 0;
+        this.clearState();
     }
 
     @action register() {

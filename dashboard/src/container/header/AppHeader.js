@@ -9,7 +9,7 @@ const { Header } = Layout;
 class AppHeader extends Component {
     @observer
     render() {
-        let settings = this.props.stores.settings;
+        let { network, settings } = this.props.stores;
 
         const menu = (
             <Menu>
@@ -19,8 +19,8 @@ class AppHeader extends Component {
                 <Menu.Item>
                     <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">2nd menu item</a>
                 </Menu.Item>
-                <Menu.Item>
-                    <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">3rd menu item</a>
+                <Menu.Item onClick={() => network.logout()}>
+                    <a target="_blank" rel="noopener noreferrer">Logout</a>
                 </Menu.Item>
             </Menu>
         );

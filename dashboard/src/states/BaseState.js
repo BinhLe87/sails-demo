@@ -75,7 +75,7 @@ export default class BaseState {
      */
     @action clearState(_clearStorage) {
         if (_clearStorage) {
-            window.localStorage.clear();
+            window.localStorage.removeItem(this.STORAGE_KEY);
         }
         this.initState();
     }
