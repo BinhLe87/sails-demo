@@ -4,7 +4,7 @@ import register from '../registerServiceWorker';
 
 // sha256('blockpass_developer_page_network')
 // const NETWORK_KEY_NAME = 'E958D0D8378CE26EEB16BD5D33A79F596F9C11AB70B759BAB357384E9E66A050';
-const NETWORK_KEY_NAME = 'bp_dev_portal_network'
+const NETWORK_KEY_NAME = 'bp_dev_portal_network';
 
 /**
  * Class for managing user login session, api calls 
@@ -38,7 +38,8 @@ export default class Network extends BaseState  {
     }
 
     @observable isLoggedIn() {
-        return true;
+        let _now = new Date().getTime();
+        return this.access_token != '' && this.expire_time > (_now / 1000);
     }
 
     @observable hasPermission(permissions) {
@@ -57,10 +58,16 @@ export default class Network extends BaseState  {
         .then((response) => response.json())
         .then((responseJSON) => {
             console.log(responseJSON);
-            if (responseJSON.status == "success") {
+            if (responseJSON.status == "success" && 
+                responseJSON.data && 
+                responseJSON.data.accessToken &&
+                responseJSON.data.expiry) 
+            {
+                let _now = new Date().getTime();
+                this.user_name = _username;
+                this.access_token = responseJSON.data.accessToken;
+                this.expire_time = _now / 1000 + responseJSON.data.expiry;
                 callback && callback.success && callback.success(responseJSON);
-                // HNToan TODO: replace state
-                this.state = 2;
             } else {
                 callback && callback.err && callback.err(responseJSON);
             }

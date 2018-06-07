@@ -10,7 +10,7 @@ import AppFooter from './footer/AppFooter';
 // footer import
 
 import './styles.scss';
-import routes from '../routes';
+import { drawerConfig, routeConfig } from '../routes';
 
 const { Header, Content, Sider, Footer } = Layout;
 
@@ -36,8 +36,8 @@ function recursiveFind(url, route) {
 function breadCrumbRender(currentPath) {
     let path = [];
     // console.log(routes.routes)
-    for (let i = 0; i < routes.routes.length; i++) {
-        let _p = recursiveFind(currentPath, routes.routes[i]);
+    for (let i = 0; i < drawerConfig.length; i++) {
+        let _p = recursiveFind(currentPath, drawerConfig[i]);
         if (_p != '' && _p != undefined) {
             path = _p.slice(0);
         }
@@ -69,7 +69,7 @@ class Container extends Component {
     @observer
     render() {
         let { network, settings } = this.props.stores;
-        let _routes = routes.routes;
+        
         return (
             <Layout style={{height:'100vh'}}>
                 <AppHeader title='{settings.current_service.name}'/>
@@ -81,7 +81,7 @@ class Container extends Component {
                                 {breadCrumbRender(this.props.location.pathname)}
                                 <Switch>
                                 {
-                                    _routes.filter(route => (network.hasPermission(route.scope) && route.component != undefined))
+                                    routeConfig.filter(route => (network.hasPermission(route.scope) && route.component != undefined))
                                         .map((route, idx) => (
                                             <Route exact key={idx} path={route.url} component={route.component}/>
                                         )) 

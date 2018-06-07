@@ -3,7 +3,7 @@ import { Button, Input, Menu, Dropdown, Layout, Icon } from 'antd';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import './styles.scss';
-import routes from '../../routes';
+import { drawerConfig } from '../../routes';
 import { observable } from 'mobx';
 
 const { Sider } = Layout;
@@ -53,13 +53,12 @@ class AppDrawer extends Component {
     render() {
         let { settings } = this.props.stores;
         let _this = this;
-        let _routes = routes.routes;
         
         return (
             <Sider className="drawer" trigger={null} collapsible collapsed={!settings.sidebar_open}>
                 <Menu theme="light" mode="inline">
                 {
-                    _routes.map((item, idx) => {
+                    drawerConfig.map((item, idx) => {
                         return <MenuItem key={item.title} item={item}/>
                     })
                 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
-import { Card, Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Card, Form, Icon, Input, Button, Switch, List, Checkbox, Tag } from 'antd';
 import './styles.scss';
 
 const FormItem = Form.Item;
@@ -39,38 +39,114 @@ class ServiceDetail extends Component {
 	@observer
 	render() {
 		const { getFieldDecorator } = this.props.form;
+		const slugs = ['email', 'given_name', 'family_name', 'address', 'dob', 'phone', 'passport', 'selfie', 'proof_of_address'];
+		const data = {"_id":"5aeab0542128392d6e8350d1","updatedAt":"2018-06-04T03:35:09.733Z","createdAt":"2018-03-22T04:51:01.276Z","levelRequirement":"1","__v":0,"status":"active","userServiceRegister":null,"appid":{"android":"","ios":""},"order":1,"deeplink":{"android":"","ios":""},"rating":"","isRegistered":false,"registerEndpoint":{"callbackUrls":[],"status":"http://localhost:3000/blockpass/api/status","upload":"http://localhost:3000/blockpass/api/uploadData","login":"http://localhost:3000/blockpass/api/login","register":"http://localhost:3000/blockpass/api/register","website":"http://localhost:3000/blockpass"},"extras":[],"images":{"banner":"","backdrop":"","thumbnail":"http://www.userlogos.org/files/logos/Brentc/localhost_logo_black.png","logo":"http://www.userlogos.org/files/logos/Brentc/localhost_logo_black.png"},"contacts":{"language":[],"address":"","country":"","googlePlus":"","twitter":"","facebook":"","email":"","website":""},"publicKeyHash":"","publicKey":"","certRequirement":["demo-service-cert"],"certificate":["demo-service-cert"],"requirementDetail":[],"requirement":["email","given_name","family_name","address","dob","phone","passport","selfie","proof_of_address"],"slug":"blockpass-5877-1528083308102","tags":[],"clientSecret":"developer_service","clientId":"developer_service","longDescription":"This is a long description","shortDescription":"3rd service demo","isin":"","name":"developer_service"}
 		const fields = [
 			{
-				name: 'username',
-				title: 'Username:',
-				rules: [{
-					message: 'must be human name',
-					required: true
-				}],
-				initialValue: 'John Doe',
-				customRender: _ => <Input/>
+				name: '_id',
+				title: 'Service ID',
+				initialValue: data._id,
+				customRender: _ => <Input disabled/>
 			},
 			{
-				name: 'email',
-				title: 'Email:',
-				rules: [{
-					type: 'email',
-					message: 'must be email'
-				}],
-				initialValue: '',
-				placeholder: 'your email',
-				customRender: _ => <Input/>
+				name: 'name',
+				title: 'Service name',
+				customRender: _ => <Input />,
+				initialValue: data.name
 			},
 			{
-				name: 'password',
-				title: 'Password:',
-				rules: [{
-					type: 'string',
-					message: 'must be 8 letters long',
-				}],
-				initialValue: '',
-				customRender: _ => <Input type="password"/>
+				name: 'shortDescription',
+				title: 'Short description',
+				customRender: _ => <Input.TextArea autosize/>,
+				initialValue: data.shortDescription
 			},
+			{
+				name: 'longDescription',
+				title: 'Long description',
+				customRender: _ => <Input.TextArea autosize/>,
+				initialValue: data.longDescription
+			},
+			{
+				name: 'status',
+				title: 'Status',
+				customRender: _ => <Switch checked={data.status == 'active'}/>
+			},
+			{
+				name: 'endpoint_status',
+				title: '/status endpoint',
+				customRender: _ => <Input />,
+				initialValue: data.registerEndpoint.status
+			},
+			{
+				name: 'endpoint_login',
+				title: '/login endpoint',
+				customRender: _ => <Input />,
+				initialValue: data.registerEndpoint.login
+			},
+			{
+				name: 'endpoint_register',
+				title: '/register endpoint',
+				customRender: _ => <Input />,
+				initialValue: data.registerEndpoint.register
+			},
+			{
+				name: 'endpoint_upload',
+				title: '/upload endpoint',
+				customRender: _ => <Input />,
+				initialValue: data.registerEndpoint.upload
+			},
+			{
+				name: 'requirement',
+				title: 'Requirements',
+				customRender: _ => (
+					<List dataSource={slugs} onChange={(val) => console.log(val)} renderItem={item => (<List.Item><Checkbox key={item} checked={data.requirement.indexOf(item) != -1}>{item}</Checkbox></List.Item>)}/>
+				),
+				initialValue: data.registerEndpoint.status
+			},
+			{
+				name: 'slug',
+				title: 'Service slug',
+				customRender: _ => <Input />,
+				initialValue: data.slug
+			},
+			{
+				name: 'tags',
+				title: 'Service tags',
+				customRender: _ => <Input/>,
+				initialValue: data.tags
+			}
+
+			// {
+			// 	name: 'username',
+			// 	title: 'Username:',
+			// 	rules: [{
+			// 		message: 'must be human name',
+			// 		required: true
+			// 	}],
+			// 	initialValue: 'John Doe',
+			// 	customRender: _ => <Input/>
+			// },
+			// {
+			// 	name: 'email',
+			// 	title: 'Email:',
+			// 	rules: [{
+			// 		type: 'email',
+			// 		message: 'must be email'
+			// 	}],
+			// 	initialValue: '',
+			// 	placeholder: 'your email',
+			// 	customRender: _ => <Input/>
+			// },
+			// {
+			// 	name: 'password',
+			// 	title: 'Password:',
+			// 	rules: [{
+			// 		type: 'string',
+			// 		message: 'must be 8 letters long',
+			// 	}],
+			// 	initialValue: '',
+			// 	customRender: _ => <Input type="password"/>
+			// },
 		]
 		return (
             <Form onSubmit={this._handleSubmit}>
@@ -90,7 +166,7 @@ class ServiceDetail extends Component {
 				})
 			}
 				<Button type='primary' htmlType='submit'>
-					Start review
+					Update
 				</Button>
 			</Form>
 		);
