@@ -5,7 +5,9 @@ yarn.lock
 
 # dependencies
 dashboard/node_modules
+dashboard/build
 server/node_modules
+server/assets
 
 # testing
 /coverage
