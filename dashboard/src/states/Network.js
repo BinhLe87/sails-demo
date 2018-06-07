@@ -18,6 +18,9 @@ export default class Network extends BaseState  {
     @observable user_info = {};
     @observable state = 1; // placeholder
 
+    baseUrl = 'http://localhost:1337';
+    loginUrl = `${this.baseUrl}/api/user/login`;
+
     /**
      * @constructor
      */
@@ -41,8 +44,35 @@ export default class Network extends BaseState  {
         return true;
     }
 
-    @action login() {
-        this.state = 2;
+    @action register(_username, _password) {
+        //
+    }
+
+    @action login(_username, _password, callback) {
+        console.log(_username, _password)
+        fetch(`${this.loginUrl}?user_name=${_username}&password=${_password}`, {
+            method: 'PUT'
+        })
+        .then((response) => response.json())
+        .then((responseJSON) => {
+            console.log(responseJSON);
+            if (responseJSON.status == "success") {
+                callback && callback.success && callback.success(responseJSON);
+                // HNToan TODO: replace state
+                this.state = 2;
+            } else {
+                callback && callback.err && callback.err(responseJSON);
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            callback && callback.err && callback.err({
+                code: 500,
+                data: {},
+                status: 'error',
+                message: err
+            });
+        })
     }
 
     @action logout() {

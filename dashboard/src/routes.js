@@ -31,13 +31,13 @@ export default {
                 }
             ]
         },
-        // {
-        //     title: 'Menu item 3',
-        //     icon: 'user',
-        //     url: '/settings',
-        //     scope: [],
-        //     component: Template
-        // },
+        {
+            title: 'Menu item 3',
+            icon: 'user',
+            url: '/settings',
+            scope: [],
+            component: ServiceDetail
+        },
         // {
         //     title: 'Menu item 4',
         //     icon: 'user',

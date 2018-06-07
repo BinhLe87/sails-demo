@@ -16,18 +16,18 @@ class MenuItem extends Component {
         if (menuItem.childs && menuItem.childs.length > 0) {
             return (
                 <SubMenu title={<span><Icon type={menuItem.icon || ''}/><span>{menuItem.title}</span></span>} {...this.props}>
-                    {
-                        menuItem.childs.map((item, idx) => {
-                            return (
-                                <Menu.Item key={item.title}>
-                                    <Link to={item.url || '#'}>
-                                        <Icon type={item.icon || '/'}/>
-                                        <span>{item.title}</span>
-                                    </Link>
-                                </Menu.Item>
-                            )
-                        })
-                    }
+                {
+                    menuItem.childs.map((item, idx) => {
+                        return (
+                            <Menu.Item key={item.title}>
+                                <Link to={item.url || '#'}>
+                                    <Icon type={item.icon || '/'}/>
+                                    <span>{item.title}</span>
+                                </Link>
+                            </Menu.Item>
+                        )
+                    })
+                }
                 </SubMenu>
             )
         } else {

@@ -81,7 +81,7 @@ class Container extends Component {
                                 {breadCrumbRender(this.props.location.pathname)}
                                 <Switch>
                                 {
-                                    _routes.filter(route => network.hasPermission(route.scope))
+                                    _routes.filter(route => (network.hasPermission(route.scope) && route.component != undefined))
                                         .map((route, idx) => (
                                             <Route exact key={idx} path={route.url} component={route.component}/>
                                         )) 
