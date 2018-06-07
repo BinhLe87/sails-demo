@@ -7,7 +7,7 @@
     "sails-generate": "1.15.27"
   },
   "hooks": {
-    "orm": false,
+    "orm": true,
     "pubsub": false,
     "blueprints": false,
     "grunt": true
