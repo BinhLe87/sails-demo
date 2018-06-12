@@ -441,7 +441,7 @@ module.exports = {
 
     /**
     * List service
-    * @route GET /api/service
+    * @route GET /blockpass_developer/api/service
     * @group service - Operations about service
     * @param {string} Authorization.header.required - accesstoken
     * @returns {object} 200 - An array of service
@@ -473,7 +473,7 @@ module.exports = {
 
     /**
     * Service Detail
-    * @route GET /api/service/{service_id}
+    * @route GET /blockpass_developer/api/service/{service_id}
     * @group service - Operations about service
     * @param {string} Authorization.header.required - accesstoken
     * @returns {object} 200 - Service Info
@@ -515,7 +515,7 @@ module.exports = {
 
     /**
     * Create Service
-    * @route POST /api/service
+    * @route POST /blockpass_developer/api/service
     * @group service - Operations about service
     * @param {string} Authorization.header.required - accesstoken
     * @returns {object} 200 - Service Info
@@ -555,7 +555,7 @@ module.exports = {
 
     /**
     * Update Service
-    * @route PUT /api/service/{service_id}
+    * @route PUT /blockpass_developer/api/service/{service_id}
     * @group service - Operations about service
     * @param {string} Authorization.header.required - accesstoken
     * @returns {object} 200 - Service Info
@@ -602,7 +602,7 @@ module.exports = {
 
     /**
     * Delete Service
-    * @route DELETE /api/service/{service_id}
+    * @route DELETE /blockpass_developer/api/service/{service_id}
     * @group service - Operations about service
     * @param {string} Authorization.header.required - accesstoken
     * @returns {object} 200 - Service Info
