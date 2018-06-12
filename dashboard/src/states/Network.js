@@ -21,7 +21,7 @@ export default class Network extends BaseState  {
 
     // baseUrl = 'http://localhost:1337';
     baseUrl = '';
-    loginUrl = `${this.baseUrl}/api/user/login`;
+    loginUrl = `${this.baseUrl}/blockpass_developer/api/user/login`;
 
     /**
      * @constructor
