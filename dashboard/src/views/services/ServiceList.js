@@ -11,22 +11,18 @@ class ServiceList extends Component{
     }
 
     componentDidMount(){
+        this.getServiceList();
+    }
+
+    getServiceList(){
         const {network} = this.props.stores;
-        fetch(`${network.listServiceUrl}`, {
-            headers: {
-                'Authorization': `${network.access_token}`
-            },
-        })
-        .then( res => res.json())
+        network.getServiceList()
         .then( data => {
-            if(data.status === 'success'){
-                this.setState({
-                    serviceList: data.data.result
-                })
-            }
+            this.setState({
+                serviceList: data.result
+            })
         })
         .catch( err => console.log('err: ' ,err))
-        
     }
 
     render(){

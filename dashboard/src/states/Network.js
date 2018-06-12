@@ -24,7 +24,7 @@ export default class Network extends BaseState  {
     loginUrl = `${this.baseUrl}/api/user/login`;
     //listService
     listServiceUrl = `${this.baseUrl}/api/service`;
-    getServiceById = `${this.baseUrl}/api/service/`
+    getServiceByIdUrl = `${this.baseUrl}/api/service/`
 
     /**
      * @constructor
@@ -93,5 +93,56 @@ export default class Network extends BaseState  {
 
     @action register() {
         this.state = 1;
+    }
+
+    @action getServiceList() {
+        return new Promise( (resolve, reject) => {
+            fetch(`${this.listServiceUrl}`,{
+                headers: {
+                    'Authorization': this.access_token
+                },
+            })
+            .then( res => res.json())
+            .then( data => {
+                if(data.status === 'success'){
+                    resolve(data.data);
+                }
+                else{
+                    resolve([])
+                }
+            })
+            .catch( err => {
+                console.log('err: ' ,err)
+                reject()
+            })
+        })
+    }
+
+    @action getSerivceById(id){
+        return new Promise( (resolve, reject) => {
+            fetch(`${this.getServiceByIdUrl}${id}`,{
+                headers: {
+                    'Authorization': this.access_token
+                },
+            })
+            .then( res => res.json())
+            .then( data => {
+                if(data.status === 'success'){
+                    resolve(data)
+                }
+                else{
+                    resolve({
+                        registerEndpoint: {
+                            status: ''
+                        },
+                        requirement: []
+                    })
+                }
+            })
+            .catch( err => {
+                console.log('err: ' ,err)
+                reject();
+            })
+        })
     }
 }
