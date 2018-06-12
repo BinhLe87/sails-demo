@@ -378,5 +378,13 @@ module.exports = {
     host: process.env.BLOCKPASS_HOST
   }
 
+  datastores: {
+    default: {
+      url: 'mongodb://blockpass:'
+        + process.env.MONGODB_API_PASSWORD + '@'
+        + process.env.MONGODB_API_HOST + ':'
+        + process.env.MONGODB_API_PORT + '/developer'
+    }
+  }
 
 };

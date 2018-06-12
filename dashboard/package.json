@@ -23,5 +23,6 @@
     "node-sass": "^4.9.0",
     "react-app-rewired": "^1.5.2",
     "sass-loader": "^7.0.1"
-  }
+  },
+  "homepage": "http://localhost:1337/blockpass_developer"
 }
