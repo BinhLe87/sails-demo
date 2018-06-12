@@ -1,0 +1,1 @@
+export default lang = {"txtCopyright":"Copyright Blockpass ©2019","txtLogin":"Login","txtUsernamePlaceholder":"username","txtInvalidUsername":"Invalid user name","txtPasswordPlaceholder":"password","txtInvalidPassword":"Invalid password"}
