@@ -20,7 +20,11 @@ export default class Network extends BaseState  {
     @observable state = 1; // placeholder
 
     baseUrl = 'http://localhost:1337';
+    // baseUrl = '';
     loginUrl = `${this.baseUrl}/api/user/login`;
+    //listService
+    listServiceUrl = `${this.baseUrl}/api/service`;
+    getServiceById = `${this.baseUrl}/api/service/`
 
     /**
      * @constructor

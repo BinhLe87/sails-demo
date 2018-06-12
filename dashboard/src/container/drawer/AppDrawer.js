@@ -20,7 +20,7 @@ class MenuItem extends Component {
                     menuItem.childs.map((item, idx) => {
                         return (
                             <Menu.Item key={item.title}>
-                                <Link to={item.url || '#'}>
+                                <Link to={item.url || '#'} replace>
                                     <Icon type={item.icon || '/'}/>
                                     <span>{item.title}</span>
                                 </Link>
@@ -33,7 +33,7 @@ class MenuItem extends Component {
         } else {
             return (
                 <Menu.Item {...this.props}>
-                    <Link to={menuItem.url || '/'}>
+                    <Link to={menuItem.url || '/'} replace>
                         <Icon type={menuItem.icon || ''}/>
                         <span>{menuItem.title}</span>
                     </Link>
