@@ -1,5 +1,6 @@
-import ServiceDetail from './views/servicedetail/ServiceDetail';
 import Template from './views/template/Template';
+import ServiceAdd from './views/serviceadd/ServiceAdd'
+import ServiceDetail from './views/servicedetail/ServiceDetail';
 import ServiceList from './views/services/ServiceList';
 import ServiceUpdate from './views/serviceupdate/ServiceUpdate';
 
@@ -19,15 +20,16 @@ export const drawerConfig = [
                 url: '/services/add'
             },
             {
+                title: 'List Services',
+                icon: 'profile',
+                url: '/services/list',
+            },
+            {
                 title: 'Detail Service',
                 icon: 'edit',
                 url: '/services/detail'
             },
-            {
-                title: 'List Services',
-                icon: 'profile',
-                url: '/services/list',
-            }
+            
         ]
     }
 ]
@@ -46,7 +48,7 @@ export const routeConfig = [
     {
         url: '/services/add',
         scope: [],
-        component: ServiceDetail
+        component: ServiceAdd
     },
     {
         url: '/services/detail',

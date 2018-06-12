@@ -33,23 +33,7 @@ class ServiceUpdate extends Component {
 	}
 
 	componentDidMount(){
-		//this.props.location.hash
-		const hash = this.props.location.hash.split('#')
-		if(hash.length > 1){
-			this.getServiceById(hash[1])
-		}
-	}
-
-	getServiceById = (hash) => {
-		const {network} = this.props.stores;
-		network.getSerivceById(hash)
-		.then( data => {
-			this.setState({
-				service: data.data,
-				loading: false
-			})
-		})
-		.catch( err => console.log('err: ', err))
+		
 	}
 
 	_handleSubmit = (e) => {
@@ -57,7 +41,6 @@ class ServiceUpdate extends Component {
 		e.preventDefault();
         this.props.form.validateFields(async (err, values) => {
             if (!err) {
-				console.log('state.service: ' , this.state.service);
 				console.log(values);
                 handleSubmit && handleSubmit(values);
             }
