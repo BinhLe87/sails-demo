@@ -19,9 +19,8 @@ export default class Network extends BaseState  {
     @observable user_info = {};
     @observable state = 1; // placeholder
 
-    // baseUrl = 'http://localhost:1337';
-    baseUrl = '';
-    loginUrl = `${this.baseUrl}/api/user/login`;
+    baseUrl = '/blockpass_developer/api';
+    loginUrl = `${this.baseUrl}/user/login`;
 
     /**
      * @constructor
