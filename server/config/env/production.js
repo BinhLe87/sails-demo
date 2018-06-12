@@ -380,7 +380,7 @@ module.exports = {
 
   datastores: {
     default: {
-      url: 'mongodb://blockpass:'
+      url: 'mongodb://blockpass_developer:'
         + process.env.MONGODB_API_PASSWORD + '@'
         + process.env.MONGODB_API_HOST + ':'
         + process.env.MONGODB_API_PORT + '/developer'
