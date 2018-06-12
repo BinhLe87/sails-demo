@@ -51,7 +51,7 @@ module.exports = {
     },
     /**
     * User Login
-    * @route PUT  /blockpass_developer/api/user/login
+    * @route PUT /blockpass_developer/api/user/login
     * @group user - Operations about user
     * @param {string} user_name.query.required - username
     * @param {string} password.query.required - user's password.
