@@ -41,8 +41,8 @@ module.exports.routes = {
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
-  'GET /blockpass_developer/api/protected/api_docs': 'DocumentAPIController.swaggerAPIDoc',
-  'GET /blockpass_developer/api/protected/document_api/:file': { controller: 'DocumentAPIController', action: 'swaggerUI', skipAssets: false },
+  'GET /blockpass_developer/protected/api_docs': 'DocumentAPIController.swaggerAPIDoc',
+  'GET /blockpass_developer/protected/document_api/:file': { controller: 'DocumentAPIController', action: 'swaggerUI', skipAssets: false },
 
 
   'POST /blockpass_developer/api/user/create': 'UserController.create',
