@@ -41,19 +41,19 @@ module.exports.routes = {
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
-  'GET /api/protected/api_docs': 'DocumentAPIController.swaggerAPIDoc',
-  'GET /api/protected/document_api/:file': { controller: 'DocumentAPIController', action: 'swaggerUI', skipAssets: false },
+  'GET /blockpass_developer/api/protected/api_docs': 'DocumentAPIController.swaggerAPIDoc',
+  'GET /blockpass_developer/api/protected/document_api/:file': { controller: 'DocumentAPIController', action: 'swaggerUI', skipAssets: false },
 
 
-  'POST /api/user/create': 'UserController.create',
-  'PUT   /api/user/login': 'UserController.login',
-  'POST /api/user/logout': 'UserController.logout',
+  'POST /blockpass_developer/api/user/create': 'UserController.create',
+  'PUT   /blockpass_developer/api/user/login': 'UserController.login',
+  'POST /blockpass_developer/api/user/logout': 'UserController.logout',
 
-  'GET /api/service': 'ServiceController.list',
-  'GET /api/service/:service_id': 'ServiceController.detail',
-  'POST /api/service': 'ServiceController.create',
-  'PUT /api/service/:service_id': 'ServiceController.update',
-  'DELETE /api/service/:service_id': 'ServiceController.delete',
+  'GET /blockpass_developer/api/service': 'ServiceController.list',
+  'GET /blockpass_developer/api/service/:service_id': 'ServiceController.detail',
+  'POST /blockpass_developer/api/service': 'ServiceController.create',
+  'PUT /blockpass_developer/api/service/:service_id': 'ServiceController.update',
+  'DELETE /blockpass_developer/api/service/:service_id': 'ServiceController.delete',
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
   //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝
