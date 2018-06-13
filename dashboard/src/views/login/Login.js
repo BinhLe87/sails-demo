@@ -80,7 +80,7 @@ class Login extends Component {
 								</Button>
 							</Col>
 							<Col className="gutter-box" span={12}>
-								<Select defaultValue="en" className="fullwidth" onChange={(langID) => localization.changeLanguage(langID)}>
+								<Select defaultValue={localization.current_language} className="fullwidth" onChange={(langID) => localization.changeLanguage(langID)}>
 								{
 									languages.map((item, idx) => {return (
 										<Option key={item.lang_id} value={item.lang_id}><img src={item.flag} style={{width: 16, height: 12}}/> {item.title}</Option>
