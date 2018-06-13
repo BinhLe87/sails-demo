@@ -1,31 +1,26 @@
 /**
- * Role.js
+ * Permission.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentatison/concepts/models-and-orm/models
  */
 
-  module.exports = {
-    tableName: "role",
+module.exports = {
+    tableName: "permission",
     attributes: {
         name: {
             type: 'string',
-            isIn: ['admin', 'operator', 'service_admin', 'service_operator'],
+        },
+
+        api: {
+
+            type: 'string',
             required: true
         },
 
-        description: {
-            type: 'string'
-        },
-
-        users: {
-            collection: 'user',
-            via: 'roles'
-        },
-
-        permissions: {
-            collection: 'permission',
-            via: 'roles'
+        roles: {
+            collection: 'role',
+            via: 'permissions'
         },
 
         status: {

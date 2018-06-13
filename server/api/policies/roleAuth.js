@@ -12,7 +12,20 @@ module.exports = (req, res, next) => {
 
     if(!userName) {
 
-        
+        return res.error(new sails.config.errors.MissingRequiredError('User name is required.'));
     }
 
+    sails.helpers.getRolesByUsername.with({username: userName, userModel: User})
+                    .intercept('UserNotFoundError', (err) => {
+
+                        return res.error(new sails.config.errors.ResourceNotFoundError(`User name '${userName}' does not exists.`))
+                    }).intercept((err) => {
+
+                        return res.error(new sails.config.errors.GenericError(undefined, err));
+                    }).then((roles) => {
+
+                        return res.success(roles);
+                    });
+
 };
+

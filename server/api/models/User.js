@@ -20,12 +20,6 @@ module.exports = {
             protect: true
         },
 
-        role: {
-            type: 'json',
-            columnType: 'array',
-            defaultsTo: ['operator']
-        },
-
         status: {
             type: 'string',
             isIn: ['active', 'inactive'],
@@ -35,20 +29,8 @@ module.exports = {
         roles: {
             collection: 'role',
             via: 'users'
-        }
+        },
+
     }
 }
 
-
-async function getRolesByUserId(userId) {
-
-    var user =  await User.findOne(userId);
-
-    if (!user) {
-
-        let err = new Error(`Does not exists user has id ${userId}`);
-        throw err;
-    }
-
-    return user.roles;
-}
