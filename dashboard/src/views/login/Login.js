@@ -35,9 +35,10 @@ class Login extends Component {
 	@observer
 	render() {
 		const { getFieldDecorator } = this.props.form;
+		let { localization } = this.props.stores;
 
 		return (
-			<Card className="login-panel" title="Login">
+			<Card className="login-panel" title={localization.getText('txtLogin')}>
 				<Spin spinning={this.state.loading}>
 					<Form onSubmit={this._handleSubmit}>
 						<FormItem key='username'>
@@ -47,9 +48,9 @@ class Login extends Component {
 									type: 'string',
 									initialValue: '',
 									required: true,
-									message: 'Invalid user name'
+									message: localization.getText('txtInvalidUsername')
 								}]
-							})(<Input prefix={<Icon type="user"/>} placeholder="username"/>)
+							})(<Input prefix={<Icon type="user"/>} placeholder={localization.getText('txtUsernamePlaceholder')}/>)
 						}
 						</FormItem>
 						<FormItem key='password'>
@@ -59,9 +60,9 @@ class Login extends Component {
 									type: 'string',
 									initialValue: '',
 									required: 'true',
-									message: 'Invalid password'
+									message: localization.getText('txtInvalidPassword')
 								}]
-							})(<Input prefix={<Icon type="lock"/>} type="password" placeholder="password"/>)
+							})(<Input prefix={<Icon type="lock"/>} type="password" placeholder={localization.getText('txtInvalidPassword')}/>)
 						}
 						</FormItem>
 						{/* <FormItem>
@@ -69,7 +70,7 @@ class Login extends Component {
 							<a className="login-form-forgot" style={{float: 'right'}} href="">Forgot password</a>
 						</FormItem> */}
 							<Button type="primary" htmlType="submit" className="login-form-button">
-								Log in
+								{localization.getText('txtLogin')}
 							</Button>{' '}
 						{/* <Button type="primary" htmlType="submit" className="login-form-button" onClick={() => this.props.stores.network.login()} style={{float: 'right'}}>
 							Log in with Blockpass

@@ -51,7 +51,7 @@ async function parseWorkbook(workbook)  {
             const relativePath = destPath;
             await Promise.all(
                 Object.keys(languageData).map((langID) => {
-                    var content = 'export default lang = ' + JSON.stringify(languageData[langID]);
+                    var content = 'export default ' + JSON.stringify(languageData[langID]);
                     // console.log(content);
                     fs.writeFile(relativePath + langID + '.js', content, function(err)  {
                         if (err)    {

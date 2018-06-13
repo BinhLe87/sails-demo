@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import { observable, action, computed } from 'mobx';
 import BaseState from './BaseState';
 import languages from '../languages';
 
@@ -10,7 +10,6 @@ const LOCALIZATION_KEY_NAME = 'bp_dev_localization';
  */
 export default class Localization extends BaseState  {
     @observable current_language = 'en';
-    language_object = {};
 
     /**
      * @constructor
@@ -20,20 +19,28 @@ export default class Localization extends BaseState  {
             { 'id': 'current_language', 'default_val': 'en'},
         ];
         super(LOCALIZATION_KEY_NAME, fields);
-        this.language_object = languages.en;
     }
 
     @action changeLanguage(langID) {
-        if (langID in ['en', 'fr', 'cn', 'jp', 'ru']) {
+        console.log('changeLanguage', langID)
+        let languageList = ['en', 'fr', 'cn', 'jp', 'ru'];
+        if (languageList.indexOf(langID) != -1) {
+            console.log('new language', langID)
             this.current_language = langID;
             this.language_object = languages[langID];
         }
     }
 
-    @action getText(textID) {
-        console.log(textID, JSON.stringify(this.language_object), this.language_object[textID])
-        if (this.language_object[textID] != null && this.language_object[textID] != undefined)
-            return this.language_object[textID];
+    @computed get currentLangObject() {
+        return languages[this.current_language];
+    }
+
+    getText(textID) {
+        let langObj = this.currentLangObject;
+        if (langObj[textID] != null && langObj[textID] != undefined) {
+            console.log(langObj[textID]);
+            return langObj[textID];
+        }
         return textID;
     }
 }

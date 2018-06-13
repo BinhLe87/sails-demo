@@ -7,10 +7,13 @@ const { Footer } = Layout;
 
 @inject('stores')
 class AppFooter extends Component {
+    @observer
     render() {
+        const {localization} = this.props.stores;
+        let txt = localization.getText('txtCopyright')
         return (
             <Footer style={{ textAlign: 'center' }}>
-                <span>{this.props.stores.localization.getText('txtCopyright')}
+                <span>{txt}
                 </span>
             </Footer>
         )
