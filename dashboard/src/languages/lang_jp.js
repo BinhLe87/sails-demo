@@ -1,0 +1,1 @@
+export default {"txtCopyright":"著作権 Blockpass ©2018","txtLogin":"ログイン","txtUsernamePlaceholder":"ユーザー名","txtInvalidUsername":"無効なユーザー名","txtPasswordPlaceholder":"パスワード","txtInvalidPassword":"無効なパスワード"}

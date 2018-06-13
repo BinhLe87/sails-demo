@@ -9,7 +9,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 class App extends Component {
 	@observer
 	render() {
-		let { network } = this.props.stores;
+		let { network, localization } = this.props.stores;
 		let isLoggedIn = network.isLoggedIn();
 
 		return (

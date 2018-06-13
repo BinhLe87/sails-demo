@@ -20,9 +20,11 @@
   "devDependencies": {
     "babel-plugin-import": "^1.7.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "exceljs": "^1.4.12",
     "node-sass": "^4.9.0",
     "react-app-rewired": "^1.5.2",
     "sass-loader": "^7.0.1"
   },
-  "homepage": "http://localhost:1337/blockpass_developer"
+  "homepage": "http://localhost:1337/blockpass_developer",
+  "proxy": "http://localhost:1337"
 }
