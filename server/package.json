@@ -9,7 +9,7 @@
     "@sailshq/lodash": "^3.10.3",
     "@sailshq/socket.io-redis": "^5.2.0",
     "doctrine-file": "^2.0.0",
-    "grunt": "1.0.1",
+    "grunt": "^1.0.3",
     "jsonwebtoken": "^8.2.2",
     "recursive-iterator": "^3.3.0",
     "request": "^2.87.0",
