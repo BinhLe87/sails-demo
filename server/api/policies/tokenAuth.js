@@ -12,10 +12,11 @@ module.exports = (req, res, next) => {
     // User is allowed, proceed to the next policy, 
     // or if this is the last policy, the controller
     const userToken = req.headers.authorization;
-    if (!userToken || !req.session.tokenId) return res.unauthorized();
+    console.log(userToken, req.headers, req.session)
+    if (!userToken) return res.unauthorized();
 
     TokenAuthService.verifyToken(userToken, (err, decoded) => {
-        if (err || !decoded || req.session.tokenId !== decoded.jti) return res.unauthorized();
+        if (err || !decoded ) return res.unauthorized();
         req.options.userId = decoded.sub;
         return next();
     });
