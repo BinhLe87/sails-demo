@@ -49,6 +49,11 @@ module.exports.routes = {
   'PUT   /blockpass_developer/api/user/login': 'UserController.login',
   'POST /blockpass_developer/api/user/logout': 'UserController.logout',
   'GET /blockpass_developer/api/user/:user_name/roles': 'UserController.getRolesByUsername',
+  'GET /blockpass_developer/api/users': 'UserController.getUsers',
+  'GET /blockpass_developer/api/roles': 'UserController.getRoles',
+  'GET /blockpass_developer/api/permissions': 'UserController.getPermissions',
+  'POST /blockpass_developer/api/user/:user_name/assign': 'UserController.assignRoleToUser',
+  'POST /blockpass_developer/api/role/:role_name/assign-permissions': 'UserController.assignPermissionsToRole',
 
   'GET /blockpass_developer/api/service': 'ServiceController.list',
   'GET /blockpass_developer/api/service/:service_id': 'ServiceController.detail',

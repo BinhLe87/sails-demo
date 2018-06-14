@@ -129,5 +129,75 @@ module.exports = {
 
                 return res.success(roles);
             });
+    },
+    getUsers: async function(req, res) {
+
+        var users = await User.find({});
+
+        return res.success(users);
+    },
+    getRoles: async function(req, res) {
+
+        var roles = await Role.find({});
+
+        return res.success(roles);
+    },
+    getPermissions: async function(req, res) {
+
+        var permissions = await Permission.find({});
+
+        return res.success(permissions);
+    },
+    assignRoleToUser: async function(req, res) {
+
+        var userName = req.param('user_name');
+        var roleName = req.body['role_name'];
+
+        sails.helpers.assignRoleToUser.with({userName: userName, roleName: roleName})
+            .intercept('UserNotFoundError', (err) => {
+                
+                return res.error(new sails.config.errors.ResourceNotFoundError(`User name '${userName}' does not exists.`))
+            })
+            .intercept('RoleNotFoundError', (err) => {
+
+                return res.error(new sails.config.errors.ResourceNotFoundError(`Role '${roleName}' does not exists.`));
+            })
+            .intercept('RoleAlreadyExists', (err) => {
+
+                return res.error(new sails.config.errors.ResourceAlreadyExistsError(`User has already assigned to role '${roleName}'`));
+            })
+            .intercept((err) => {
+
+                sails.log.error(err);
+                return res.error(new sails.config.errors.GenericError(undefined, err)); 
+            })
+            .then(() => {
+
+                return res.success();
+            })
+    },
+    assignPermissionsToRole: async function(req, res) {
+
+        var roleName = req.param('role_name');
+        var permissions = req.body['permissions'];
+
+        sails.helpers.assignPermissionsToRole.with({roleName: roleName, permissions: permissions})
+            .intercept('RoleNotFoundError', (err) => {
+
+                return res.error(new sails.config.errors.ResourceNotFoundError(`Role '${roleName}' does not exists.`));
+            })
+            .intercept('InvalidPermissionsError', (err) => {
+
+                return res.error(new sails.config.errors.BadRequestError(err.message));
+            })
+            .intercept((err) => {
+
+                sails.log.error(err);
+                return res.error(new sails.config.errors.GenericError(undefined, err)); 
+            })
+            .then(() => {
+
+                return res.success();
+            })
     }
 }
