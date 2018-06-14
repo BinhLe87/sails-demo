@@ -18,6 +18,11 @@ module.exports = {
             required: true
         },
 
+        action: {
+
+            type: 'string'
+        },
+
         roles: {
             collection: 'role',
             via: 'permissions'
@@ -28,5 +33,18 @@ module.exports = {
             isIn: ['active', 'inactive'],
             defaultsTo: 'active'
         },
-    }
+    }, 
+    indexes: [
+        //event & match composite index
+        {
+          attributes: {
+            api: 1,    // asc
+            action: 1         // asc
+          },
+          options: {
+            unique: true,
+            name: 'api_action'
+          }
+        }
+      ]
 }

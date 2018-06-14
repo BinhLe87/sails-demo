@@ -1,5 +1,7 @@
 'use strict';
 
+var errorToJSON = require( 'utils-error-to-json' );
+
 /**
  * Generic Error
  *
@@ -27,7 +29,7 @@ function GenericError(mssg = 'The server encountered an internal error. Please r
     this.mssg = mssg;
     this.name = 'GenericError';
     this.code = code;
-    this.data = data;
+    this.data = (data instanceof Error) ? errorToJSON(data) : data;
 }
 
 /*!

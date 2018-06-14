@@ -11,7 +11,8 @@
         name: {
             type: 'string',
             isIn: ['admin', 'operator', 'service_admin', 'service_operator'],
-            required: true
+            required: true,
+            unique: true
         },
 
         description: {

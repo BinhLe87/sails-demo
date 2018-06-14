@@ -8,24 +8,43 @@
  */
 module.exports = (req, res, next) => {
 
-    let userName = req.param('user_name');
+   var userName = req.param('user_name');
 
-    if(!userName) {
+   var action = req.method;
+   var api = req.url
 
-        return res.error(new sails.config.errors.MissingRequiredError('User name is required.'));
-    }
+   sails.helpers.checkUserHasPermission
+        .with({username: userName, api: api, action: action})
+        .intercept('UserNotFoundError', (err) => {
 
-    sails.helpers.getRolesByUsername.with({username: userName, userModel: User})
-                    .intercept('UserNotFoundError', (err) => {
+            return res.error(new sails.config.errors.ResourceNotFoundError(`User name '${userName}' does not exists.`))
+        })
+        .intercept('MissingPermissionArgumentError', (err) => {
 
-                        return res.error(new sails.config.errors.ResourceNotFoundError(`User name '${userName}' does not exists.`))
-                    }).intercept((err) => {
+            sails.log.error(err);
+            return res.error(new sails.config.errors.GenericError(undefined, err)); 
+        })
+        .intercept('InsufficientPermissionsError', (err) => {
+            
+            return res.error(new sails.config.errors.PermissionDeniedError(`You do not have permission to make this API call.`))
+        })
+        .intercept('PermissionNotFoundError', (err) => {
 
-                        return res.error(new sails.config.errors.GenericError(undefined, err));
-                    }).then((roles) => {
+            err.detail = `Permission is not yet defined for request ${req.method} ${req.url}`;
+             
+            sails.log.error(err);
+            return res.error(new sails.config.errors.PermissionDeniedError(
+                `You do not have permission to make this API call.`,
+                err
+            ));
+        })
+        .intercept((err) => {
 
-                        return res.success(roles);
-                    });
+            return res.error(new sails.config.errors.GenericError(undefined, err));
+        }).then(() => {
+
+            return next();
+        });
 
 };
 

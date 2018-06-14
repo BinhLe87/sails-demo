@@ -1,6 +1,9 @@
-module.exports = {
+var models = require('include-all')({
 
-    GenericError: require('./GenericError'),
-    MissingRequiredError: require('./MissingRequiredError'),
-    ResourceNotFoundError: require('./ResourceNotFoundError')
-}
+    dirname     : __dirname,
+    filter      : /^(?!index)(.+)\.js$/i,
+    excludeDirs : /^\.(git|svn)$/,
+});
+
+
+module.exports = models;

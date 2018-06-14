@@ -2,42 +2,40 @@ module.exports = {
 
     inputs: {
 
-        username: {
+        role: {
 
             type: 'string',
             require: true
         },
 
-        userModel: {
+        roleModel: {
 
-            type: 'ref',
-            require: true
+            type: 'ref'
         },
     },
 
     exits: {
 
-        UserNotFoundError: {
+        RoleNotFoundError: {
 
         }
     },
 
-
     fn: async function (inputs, exits) {
 
-        var username = inputs.username;
-        var userModel = inputs.userModel;
+        var roleName = inputs.role;
+        var roleModel = inputs.roleModel || Role;
 
-        var userWithRoles = await userModel.findOne({userName: username}).populate('roles').intercept((err)=>{
+        var roleWithPermissions = await roleModel.findOne({roleName: username}).populate('permissions').intercept((err)=>{
 
             return exits.error(err);
         });
 
-        if (!userWithRoles) {
+        if (!roleWithPermissions) {
 
-            return exits.UserNotFoundError();
+            return exits.RoleNotFoundError();
         }
 
-        return exits.success(userWithRoles.roles);
+        return exits.success(roleWithPermissions.permissions);
     }
 }

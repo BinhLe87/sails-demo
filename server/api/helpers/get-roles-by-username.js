@@ -10,8 +10,7 @@ module.exports = {
 
         userModel: {
 
-            type: 'ref',
-            require: true
+            type: 'ref'
         },
     },
 
@@ -26,7 +25,7 @@ module.exports = {
     fn: async function (inputs, exits) {
 
         var username = inputs.username;
-        var userModel = inputs.userModel;
+        var userModel = inputs.userModel || User;
 
         var userWithRoles = await userModel.findOne({userName: username}).populate('roles').intercept((err)=>{
 
