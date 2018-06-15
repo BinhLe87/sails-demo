@@ -30,6 +30,8 @@ function GenericError(mssg = 'The server encountered an internal error. Please r
     this.name = 'GenericError';
     this.code = code;
     this.data = (data instanceof Error) ? errorToJSON(data) : data;
+
+    return this;
 }
 
 /*!

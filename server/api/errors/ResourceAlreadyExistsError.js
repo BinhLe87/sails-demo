@@ -7,6 +7,8 @@ function ResourceAlreadyExistsError(mssg = 'The specified resource already exist
     GenenicError.call(this, mssg, data, code);
 
     this.name = 'ResourceAlreadyExistsError';
+
+    return this;
 }
 
 

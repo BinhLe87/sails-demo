@@ -7,6 +7,8 @@ function ResourceNotFoundError(mssg = 'The specified resource does not exist.', 
     GenenicError.call(this, mssg, data, code);
 
     this.name = 'ResourceNotFoundError';
+
+    return this;
 }
 
 

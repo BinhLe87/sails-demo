@@ -7,6 +7,8 @@ function BadRequestError(mssg = 'One of the request inputs is not valid.', data 
     GenenicError.call(this, mssg, data, code);
 
     this.name = 'BadRequestError';
+
+    return this;
 }
 
 

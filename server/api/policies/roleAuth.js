@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
         .with({username: userName, api: api, action: action})
         .intercept('UserNotFoundError', (err) => {
 
-            return res.error(new sails.config.errors.ResourceNotFoundError(`User name '${userName}' does not exists.`))
+            return res.error(sails.config.errors.ResourceNotFoundError(`User name '${userName}' does not exists.`))
         })
         .intercept('MissingPermissionArgumentError', (err) => {
 

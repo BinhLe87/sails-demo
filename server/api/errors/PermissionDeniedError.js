@@ -7,6 +7,8 @@ function PermissionDeniedError(mssg = 'Permission denied', data = {}, code = 403
     GenenicError.call(this, mssg, data, code);
 
     this.name = 'PermissionDeniedError';
+
+    return this;
 }
 
 

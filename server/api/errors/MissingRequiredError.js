@@ -7,6 +7,8 @@ function MissingRequiredError(mssg = 'Missing argument', data = {}, code = 400) 
     GenenicError.call(this, mssg, data, code);
 
     this.name = 'MissingRequiredError';
+
+    return this;
 }
 
 

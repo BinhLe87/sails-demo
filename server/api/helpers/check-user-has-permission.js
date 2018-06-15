@@ -71,25 +71,47 @@ module.exports = {
             throw 'MissingPermissionArgumentError';
         }
 
-        permissionCriteria = permissionID ? { id: permissionID }
-            : Object.assign({}, { api: api }, { action: action });
-
+        
         var getRolesByUserNameAsyncF = sails.helpers.getRolesByUsername.with({ username: userName })
             .intercept('UserNotFoundError', (err) => {
 
                 throw 'UserNotFoundError';
             });
 
-        var getRolesByPermissionIDAsyncF = permissionModel.findOne(permissionCriteria).populate('roles').toPromise();
+        var permissionRequireRoles;
+        var userHasRoles;
+        if (permissionID) { //find by permissionID
 
-        var [roles, permission] = await Promise.all([getRolesByUserNameAsyncF, getRolesByPermissionIDAsyncF]);
+            var getPermissionByIDAsyncF = permissionModel.findOne({id: permissionID}).populate('roles').toPromise();
+            var [userHasRoles, found_permission] = await Promise.all([getRolesByUserNameAsyncF, getPermissionByIDAsyncF]);
 
-        if (!permission) {
+            if(!found_permission) throw 'PermissionNotFoundError'; 
 
-            throw 'PermissionNotFoundError';
+            permissionRequireRoles = found_permission.roles;
+        } else { //find by compound key is 'api' field + 'action' field
+            
+            userHasRoles = await getRolesByUserNameAsyncF;
+            // in term of 'api' field, it is considered matching if it is a substring of request.url
+            // Since waterline not support this feature matching, so will handle manually. First, search by 'action' field. 
+            // Second, use regular expression in JS to filter 'api' one more time.
+            var matchedPermissionsByAction = await permissionModel.find({action: action}).populate('roles');
+
+            var matchedPermissions = _.filter(matchedPermissionsByAction, function(permission) {
+
+                return api.indexOf(permission.api) > -1;
+            });
+
+            if (_.isEmpty(matchedPermissions)) throw 'PermissionNotFoundError';
+
+            permissionRequireRoles = _.reduce(matchedPermissions, (accumulator, curValue) => {
+
+                accumulator.push(...curValue.roles);
+
+                return accumulator;
+            }, []);
         }
 
-        if (_.intersectionBy(roles, permission.roles, 'id').length == 0) {
+        if (_.intersectionBy(userHasRoles, permissionRequireRoles, 'id').length == 0) {
 
             throw 'InsufficientPermissionsError';
         }
