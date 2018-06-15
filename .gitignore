@@ -25,3 +25,18 @@ server/assets
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+#demo - just for test functionalities
+**demo
+
+#node_modules
+**node_modules
+
+#vscode settings
+**vscode
+
+
+#dashboard  - not relates to back-end tasks
+dashboard/**
+
